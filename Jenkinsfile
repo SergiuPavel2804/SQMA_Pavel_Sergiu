@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'maven:3.9.6-eclipse-temurin-17'
-        }
-    }
+    agent any
 
     parameters {
         choice(
@@ -17,7 +13,7 @@ pipeline {
     }
 
     stages {
-        stage('Run Selected Tests') {
+        stage('Run Selected Test') {
             steps {
                 sh "mvn test -Dtest=${params.TEST_CLASS}"
             }
