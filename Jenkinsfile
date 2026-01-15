@@ -5,21 +5,16 @@ pipeline {
         maven 'Maven3'
     }
 
-    parameters {
-        choice(
-            name: 'TEST_CLASS',
-            choices: [
-                'CalculatorAddTest',
-                'CalculatorMultiplyTest'
-            ],
-            description: 'Select which JUnit test class to run'
-        )
-    }
-
     stages {
-        stage('Run Selected Test') {
+        stage('Run Add Tests') {
             steps {
-                sh "mvn test -Dtest=${params.TEST_CLASS}"
+                sh "mvn test -Dtest=CalculatorAddTest"
+            }
+        }
+
+        stage('Run Multiply Tests') {
+            steps {
+                sh "mvn test -Dtest=CalculatorMultiplyTest"
             }
         }
     }
