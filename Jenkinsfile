@@ -13,12 +13,6 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/SergiuPavel2804/SQMA_Pavel_Sergiu.git'
-            }
-        }
-
         stage('Build & Test in Docker') {
             steps {
                 script {
