@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'maven:3.9.6-eclipse-temurin-17'
+            args '-v /root/.m2:/root/.m2'
+        }
+    }
 
     parameters {
         choice(
@@ -13,14 +18,9 @@ pipeline {
     }
 
     stages {
-        stage('Build & Test in Docker') {
+        stage('Run Selected Tests') {
             steps {
-                script {
-                    docker.build("sqma-tests")
-                    docker.image("sqma-tests").inside {
-                        sh "mvn test -Dtest=${params.TEST_CLASS}"
-                    }
-                }
+                sh "mvn test -Dtest=${params.TEST_CLASS}"
             }
         }
     }
