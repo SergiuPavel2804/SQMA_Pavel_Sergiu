@@ -2,7 +2,6 @@ pipeline {
     agent {
         docker {
             image 'maven:3.9.6-eclipse-temurin-17'
-            args '-v /root/.m2:/root/.m2'
         }
     }
 
@@ -13,7 +12,7 @@ pipeline {
                 'CalculatorAddTest',
                 'CalculatorMultiplyTest'
             ],
-            description: 'Select which test class to run'
+            description: 'Select which JUnit test class to run'
         )
     }
 
