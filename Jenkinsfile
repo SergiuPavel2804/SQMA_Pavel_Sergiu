@@ -15,7 +15,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/<your-username>/SQMA_Pavel_Sergiu.git'
+                git 'https://github.com/SergiuPavel2804/SQMA_Pavel_Sergiu.git'
             }
         }
 
